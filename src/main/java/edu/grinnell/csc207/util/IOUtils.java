@@ -14,23 +14,22 @@ public class IOUtils {
   /**
    * Prompt for and read an integer.
    *
-   * @param pw
-   *   The PrintWriter used for printing prompts.
-   * @param br
-   *   The BufferedReader used for reading responses.
-   * @param prompt
-   *   The prompt to print. Set to null if you want no prompt printed.
+   * @param pw The PrintWriter used for printing prompts.
+   * @param br The BufferedReader used for reading responses.
+   * @param prompt The prompt to print. Set to null if you want no prompt printed.
    *
-   * @return
-   *   The integer read.
+   * @return The integer read.
    */
-  public static int readInt(PrintWriter pw, BufferedReader br, String prompt)
-      throws Exception {
+  public static int readInt(PrintWriter pw, BufferedReader br, String prompt) {
     if (prompt != null) {
       pw.print(prompt);
       pw.flush();
     } // if there is a prompt
-    String response = br.readLine();
-    return Integer.parseInt(response);
+    try {
+      String response = br.readLine();
+      return Integer.parseInt(response);
+    } catch (Exception e) {
+      return Integer.MIN_VALUE;
+    }
   } // readInt
 } // class IOUtils
